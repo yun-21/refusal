@@ -8,6 +8,9 @@ export default function Home() {
         네모칸(설명이 들어갈 것 임)
       </div>
       <div>
+        dd?
+      </div>
+      <div>
         <button>시작하기</button>
       </div>
     </div>
