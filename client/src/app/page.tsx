@@ -1,10 +1,11 @@
+"use client";
 import {useRouter} from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
 
   const changePage = () => {
-    router.push('/정하지않음');
+    router.push('/test');
   }
   return (
     <div>
