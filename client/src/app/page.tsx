@@ -5,7 +5,7 @@ export default function Home() {
   const router = useRouter();
 
   const changePage = () => {
-    router.push('/test');
+    router.push('/name_question');
   }
   return (
     <div>
