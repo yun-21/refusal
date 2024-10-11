@@ -1,15 +1,23 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 export default function Name() {
+  const router = useRouter();
   const [name, setName] = useState('');
   const nameSend = () => {
-    return fetch('http://locahost:3001/nameSend', {
+    return fetch('http://localhost:3001/nameSend', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name })
     })
+    .then((res)=>{
+      console.log(res);
+      sessionStorage.setItem('name', name);
+      router.push('/first_question');
+    })
+    .catch((error) => console.error('Error:', error));
   }
   const nameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
