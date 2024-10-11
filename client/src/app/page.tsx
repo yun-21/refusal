@@ -1,11 +1,12 @@
 "use client";
-import {useRouter} from "next/navigation";
+import { useState } from "react";
+import StartModal from "./startModal";
 
 export default function Home() {
-  const router = useRouter();
+  const [modal, setModal] = useState(false);
 
-  const changePage = () => {
-    router.push('/name_question');
+  const modalClick = () => {
+    setModal(!modal);
   }
   return (
     <div>
@@ -15,9 +16,10 @@ export default function Home() {
       <div>
         게임 설명
       </div>
-      <div onClick={changePage}>
+      <div onClick={modalClick}>
         게임 시작
       </div>
+      <StartModal open={modal} close={modalClick}/>
     </div>
   );
 }
