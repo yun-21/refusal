@@ -12,7 +12,7 @@ export default function Third() {
     })
     .then((data)=>{
       console.log(data.like);
-      router.push('/like_result')
+      router.push('/result')
     })
     .catch((err) => console.log(err))
   }
@@ -51,7 +51,7 @@ export default function Third() {
     })
     .then((data) => {
       console.log(data.pushover);
-      router.push('/notRefusalEnding')
+      router.push('/result')
     })
     .catch((err) => console.log(err))
   }
