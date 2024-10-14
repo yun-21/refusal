@@ -17,15 +17,23 @@ export class AppController {
   }
 
   @Post('/like')
-  likeCount(){
+  likeCount() {
     return this.appService.likeCounter();
   }
   @Post('/dislike')
-  dislikeCount(){
+  dislikeCount() {
     return this.appService.dislikeCounter();
   }
   @Post('/pushover')
-  pushoverCount(){
+  pushoverCount() {
     return this.appService.pushoverCounter();
+  }
+  @Post('/notRefusal')
+  notRefusalEnding() {
+    return this.appService.notRefusalEnding();
+  }
+  @Post('/test')
+  test() {
+    return this.appService.test();
   }
 }
