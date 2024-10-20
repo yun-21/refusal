@@ -1,7 +1,6 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 export default function Second() {
-  const router = useRouter();
   const nameFromStorage = sessionStorage.getItem('name');
   const like = () => {
     return fetch("http://localhost:3001/like", {
@@ -12,7 +11,6 @@ export default function Second() {
     })
     .then((data)=>{
       console.log(data.like);
-      router.push('/third_question')
     })
     .catch((err) => console.log(err))
   }
@@ -25,7 +23,6 @@ export default function Second() {
     })
     .then((data) => {
       console.log(data.dislike);
-      router.push('/third_question')
     })
     .catch((err) => console.log(err))
   }
@@ -38,26 +35,25 @@ export default function Second() {
     })
     .then((data) => {
       console.log(data.pushover);
-      router.push('/third_question')
     })
     .catch((err) => console.log(err))
   }
-
+  const question = [
+    {id: 1, text: '오늘은 제가 중요한 미팅이 있어서요. 혹시 내일 저녁에 회식하는 것이 어떠할까요?', click: like},
+    {id: 2, text: '(미팅 상대에게 양해를 구하고 팀원들과 회식해야겠네..)좋죠. 갑시다.', click: dislike},
+    {id: 3, text: '저녁에 약속이 있기 때문에, 저는 회식에 참석하지 못하겠습니다.', click: pushover}
+  ]
   return (
     <div>
       <div>
         <h1>{nameFromStorage}씨는 중요한 미팅 저녁 약속이 있다. {nameFromStorage}씨의 팀원들이 회식을 제안한다. 당신은 어떻게 할 것 인가?</h1>
       </div>
       <div>
-        <div onClick={like}>
-          오늘은 제가 중요한 미팅이 있어서요. 혹시 내일 저녁에 회식하는 것이 어떠할까요?
-        </div>
-        <div onClick={dislike}>
-          (미팅 상대에게 양해를 구하고 팀원들과 회식해야겠네..)좋죠. 갑시다.
-        </div>
-        <div onClick={pushover}>
-          저녁에 약속이 있기 때문에, 저는 회식에 참석하지 못하겠습니다.
-        </div>
+        {question.map((answer) => (
+          <Link key={answer.id} href="/third_question"> 
+            <div onClick={answer.click}>{answer.text}</div>
+          </Link>
+        ))}
       </div>
     </div>
   );
