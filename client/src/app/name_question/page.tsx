@@ -14,7 +14,10 @@ export default function Name() {
     })
     .then((res)=>{
       console.log(res);
-      sessionStorage.setItem('name', name);
+      // 브라우저 환경에서만 sessionStorage 사용
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('name', name);
+      }
       router.push('/first_question');
     })
     .catch((error) => console.error('Error:', error));

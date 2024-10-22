@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 export default function First() {
   const like = () => {
     return fetch("http://localhost:3001/like", {
@@ -37,7 +38,18 @@ export default function First() {
     })
     .catch((err) => console.log(err))
   }
-  const nameFromStorage = sessionStorage.getItem('name');
+  const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // sessionStorage에 값 설정
+      sessionStorage.setItem('name', 'value');
+      // sessionStorage에서 값 가져오기
+      const storedName = sessionStorage.getItem('name');
+      setNameFromStorage(storedName);
+    }
+  }, []);
+  // const nameFromStorage = sessionStorage.getItem('name');
   const question = [
     {id: 1, text: '(오늘도 야근해야겠네..)아, 네 저 주세요!', click: pushover},
     {id: 2, text: '아, 죄송해요. 저도 지금 일이 좀 쌓여서요..', click: like},
