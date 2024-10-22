@@ -32,8 +32,8 @@ export class AppController {
   notRefusalEnding() {
     return this.appService.notRefusalEnding();
   }
-  @Post('/test')
-  test() {
-    return this.appService.test();
+  @Post('/result')
+  result() {
+    return this.appService.result();
   }
 }
