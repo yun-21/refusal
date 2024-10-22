@@ -10,7 +10,7 @@ export default function Four() {
       setNameFromStorage(storedName);
     }
   }, []);
-  
+
   const like = () => {
     return fetch("http://localhost:3001/like", {
       method: 'POST'
@@ -63,7 +63,7 @@ export default function Four() {
             <Link key={answer.id} href="/five_question"> 
               <div onClick={answer.click}>{answer.text}</div>
             </Link>
-          ) : <Link key={answer.id} href="four_question_bouas">
+          ) : <Link key={answer.id} href="four_question_bonus">
             <div onClick={answer.click}>{answer.text}</div>
           </Link>
 
