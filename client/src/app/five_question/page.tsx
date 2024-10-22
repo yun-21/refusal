@@ -1,19 +1,16 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-export default function Third() {
+export default function Five() {
   const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // sessionStorage에 값 설정
-      sessionStorage.setItem('name', 'value');
-      // sessionStorage에서 값 가져오기
       const storedName = sessionStorage.getItem('name');
       setNameFromStorage(storedName);
     }
   }, []);
-  // const nameFromStorage = sessionStorage.getItem('name');
+  
   const like = () => {
     return fetch("http://localhost:3001/like", {
       method: 'POST'
@@ -38,19 +35,6 @@ export default function Third() {
     })
     .catch((err) => console.log(err))
   }
-  // const pushover = () => {
-  //   return fetch("http://localhost:3001/pushover", {
-  //     method: 'POST'
-  //   })
-  //   .then((res) => {
-  //     return res.json()
-  //   })
-  //   .then((data) => {
-  //     console.log(data.pushover);
-  //     router.push('/result')
-  //   })
-  //   .catch((err) => console.log(err))
-  // }
   const notRefusal = () => {
     return fetch("http://localhost:3001/notRefusal", {
       method: 'POST'
@@ -75,7 +59,7 @@ export default function Third() {
       </div>
       <div>
         {question.map((answer) => (
-          <Link key={answer.id} href="/five_question"> 
+          <Link key={answer.id} href="/result"> 
             <div onClick={answer.click}>{answer.text}</div>
           </Link>
         ))}

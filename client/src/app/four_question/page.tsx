@@ -1,19 +1,16 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-export default function Third() {
+export default function Four() {
   const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // sessionStorage에 값 설정
-      sessionStorage.setItem('name', 'value');
-      // sessionStorage에서 값 가져오기
       const storedName = sessionStorage.getItem('name');
       setNameFromStorage(storedName);
     }
   }, []);
-  // const nameFromStorage = sessionStorage.getItem('name');
+  
   const like = () => {
     return fetch("http://localhost:3001/like", {
       method: 'POST'
@@ -62,9 +59,14 @@ export default function Third() {
       </div>
       <div>
         {question.map((answer) => (
-          <Link key={answer.id} href="/five_question"> 
+          answer.click !== pushover ? (
+            <Link key={answer.id} href="/five_question"> 
+              <div onClick={answer.click}>{answer.text}</div>
+            </Link>
+          ) : <Link key={answer.id} href="four_question_bouas">
             <div onClick={answer.click}>{answer.text}</div>
           </Link>
+
         ))}
       </div>
     </div>

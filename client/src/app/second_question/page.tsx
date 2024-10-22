@@ -2,18 +2,15 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 export default function Second() {
-  // const nameFromStorage = sessionStorage.getItem('name');
   const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // sessionStorage에 값 설정
-      sessionStorage.setItem('name', 'value');
-      // sessionStorage에서 값 가져오기
       const storedName = sessionStorage.getItem('name');
       setNameFromStorage(storedName);
     }
   }, []);
+  
   const like = () => {
     return fetch("http://localhost:3001/like", {
       method: 'POST'

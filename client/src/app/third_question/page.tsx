@@ -8,14 +8,11 @@ export default function Third() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // sessionStorage에 값 설정
-      sessionStorage.setItem('name', 'value');
-      // sessionStorage에서 값 가져오기
       const storedName = sessionStorage.getItem('name');
       setNameFromStorage(storedName);
     }
   }, []);
-  // const nameFromStorage = sessionStorage.getItem('name');
+  
   const like = () => {
     return fetch("http://localhost:3001/like", {
       method: 'POST'
