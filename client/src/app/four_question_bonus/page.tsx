@@ -1,8 +1,13 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import AnswerFetch from '../answer_fetch/answer_fetch';
+import AnswerArr from '../answer_arr/answer';
+
 export default function FourBonus() {
   const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
+  const [answer, setAnswer] = useState<string>('');
+  const [colorChange, setColorChange] = useState<number | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -10,36 +15,20 @@ export default function FourBonus() {
       setNameFromStorage(storedName);
     }
   }, []);
-  
-  const like = () => {
-    return fetch("http://localhost:3001/like", {
-      method: 'POST'
-    })
-      .then((res) => {
-        return res.json()
-      })
-      .then((data) => {
-        console.log(data.like);
-      })
-      .catch((err) => console.log(err))
+
+  const answerFetch = async () => {
+    await AnswerFetch(answer)
   }
-  const dislike = () => {
-    return fetch("http://localhost:3001/dislike", {
-      method: 'POST'
-    })
-      .then((res) => {
-        return res.json()
-      })
-      .then((data) => {
-        console.log(data.dislike);
-      })
-      .catch((err) => console.log(err))
+
+  const checkClick = (answer: string, id: number) => {
+    setAnswer(answer)
+    setColorChange(id);
   }
 
   const question = [
-    { id: 1, text: '땡구씨에게 더 필요한 것 같으니까.. 양보해드릴게요. 다음에 이런 기회가 또 있다면 저에게 양보해주세요!', click: like },
-    { id: 2, text: '이번에 땡땡씨가 부탁해서 양보해드리는 것이에요. 다음에는 양보 못해요~!', click: dislike },
-    { id: 3, text: '다음에 기회가 있다면 도와드릴게요.', click: dislike }
+    { id: 1, text: '땡구씨에게 더 필요한 것 같으니까.. 양보해드릴게요. 다음에 이런 기회가 또 있다면 저에게 양보해주세요!', click: 'like' },
+    { id: 2, text: '이번에 땡땡씨가 부탁해서 양보해드리는 것이에요. 다음에는 양보 못해요~!', click: 'dislike' },
+    { id: 3, text: '다음에 기회가 있다면 도와드릴게요.', click: 'dislike' }
   ]
   return (
     <div>
@@ -48,10 +37,12 @@ export default function FourBonus() {
       </div>
       <div>
         {question.map((answer) => (
-          <Link key={answer.id} href="/five_question">
-            <div onClick={answer.click}>{answer.text}</div>
-          </Link>
+          <AnswerArr key={answer.id} id={answer.id} text={answer.text} click={answer.click} isSelected={colorChange === answer.id} onClick={checkClick}/>
         ))}
+      </div>
+      <div>
+        <Link href="/four_question"><button>뒤로가기</button></Link>
+        <Link href="/five_question"><button onClick={answerFetch}>다음으로</button></Link>
       </div>
     </div>
   );

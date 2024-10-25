@@ -19,15 +19,15 @@ export default function First() {
     await AnswerFetch(answer)
   }
 
+  const checkClick = (answer: string, id: number) => {
+    setAnswer(answer)
+    setColorChange(id);
+  }
   const question = [
     {id: 1, text: '(오늘도 야근해야겠네..)아, 네 저 주세요!', click: 'pushover'},
     {id: 2, text: '아, 죄송해요. 저도 지금 일이 좀 쌓여서요..', click: 'like'},
     {id: 3, text: '싫은데요? 제가 왜요.', click: 'dislike'}
   ]
-  const checkClick = (answer: string, id: number) => {
-    setAnswer(answer)
-    setColorChange(id);
-  }
   return (
     <div>
       <div>

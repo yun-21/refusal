@@ -1,10 +1,13 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 import { useState, useEffect } from 'react';
+import AnswerFetch from '../answer_fetch/answer_fetch';
+import AnswerArr from '../answer_arr/answer';
+
 export default function Third() {
-  const router = useRouter();
   const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
+  const [answer, setAnswer] = useState<string>('');
+  const [colorChange, setColorChange] = useState<number | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -12,50 +15,20 @@ export default function Third() {
       setNameFromStorage(storedName);
     }
   }, []);
+
+  const answerFetch = async () => {
+    await AnswerFetch(answer)
+  }
+
+  const checkClick = (answer: string, id: number) => {
+    setAnswer(answer)
+    setColorChange(id);
+  }
   
-  const like = () => {
-    return fetch("http://localhost:3001/like", {
-      method: 'POST'
-    })
-    .then((res)=>{
-      return res.json()
-    })
-    .then((data)=>{
-      console.log(data.like);
-      router.push('/four_question')
-    })
-    .catch((err) => console.log(err))
-  }
-  const dislike = () => {
-    return fetch("http://localhost:3001/dislike", {
-      method: 'POST'
-    })
-    .then((res) => {
-      return res.json()
-    })
-    .then((data) => {
-      console.log(data.dislike);
-      router.push('/four_question')
-    })
-    .catch((err) => console.log(err))
-  }
-  const pushover = () => {
-    return fetch("http://localhost:3001/pushover", {
-      method: 'POST'
-    })
-    .then((res) => {
-      return res.json()
-    })
-    .then((data) => {
-      console.log(data.pushover);
-      router.push('/four_question')
-    })
-    .catch((err) => console.log(err))
-  }
   const question = [
-    {id: 1, text: '다른 친구를 부르는 것도 정말 좋은데, 나는 오늘 너랑만 재밌게 놀고싶어!', click: like},
-    {id: 2, text: '여럿이서 노는게 제일 재밌지! 불러 불러~', click: pushover},
-    {id: 3, text: '야, 너 나랑 둘이 노는게 재미 없냐?', click: dislike}
+    { id: 1, text: '다른 친구를 부르는 것도 정말 좋은데, 나는 오늘 너랑만 재밌게 놀고싶어!', click: 'like' },
+    { id: 2, text: '여럿이서 노는게 제일 재밌지! 불러 불러~', click: 'pushover' },
+    { id: 3, text: '야, 너 나랑 둘이 노는게 재미 없냐?', click: 'dislike' }
   ]
   return (
     <div>
@@ -64,10 +37,11 @@ export default function Third() {
       </div>
       <div>
         {question.map((answer) => (
-          <Link key={answer.id} href="/four_question"> 
-            <div onClick={answer.click}>{answer.text}</div>
-          </Link>
-        ))}
+          <AnswerArr key={answer.id} id={answer.id} text={answer.text} click={answer.click} isSelected={colorChange === answer.id} onClick={checkClick}/>        ))}
+      </div>
+      <div>
+        <Link href="/second_question"><button>뒤로가기</button></Link>
+        <Link href="/four_question"><button onClick={answerFetch}>다음으로</button></Link>
       </div>
     </div>
   );
