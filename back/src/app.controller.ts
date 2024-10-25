@@ -11,9 +11,13 @@ export class AppController {
     return this.appService.sendName(userName);
   }
 
-  @Post('/testCheck')
-  testCheck(@Body() body: { answer: string }) {
-    return this.appService.testCheck(body.answer);
+  @Post('/answerResult')
+  answerResult(@Body() body: { answer: string }) {
+    return this.appService.answerResult(body.answer);
+  }
+  @Post('/check')
+  check() {
+    return this.appService.check();
   }
 
   @Post('/like')

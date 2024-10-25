@@ -7,9 +7,15 @@ export class AppService {
   private dislikeCount = 0;
   private pushoverCount = 0;
   private gomin = 0;
+  private arr = [];
 
-  testCheck(answer: string) {
-    console.log(answer);
+  answerResult(answer: string) {
+    this.arr.push(answer);
+    console.log(this.arr);
+  }
+  check() {
+    this.arr.pop();
+    console.log(this.arr);
   }
 
   result() {
