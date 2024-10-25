@@ -8,9 +8,8 @@ export class AppService {
   private pushoverCount = 0;
   private gomin = 0;
 
-  // 나중에 삭제할 문
-  getHello(): string {
-    return '커밋테스트';
+  testCheck(answer: string) {
+    console.log(answer);
   }
 
   result() {

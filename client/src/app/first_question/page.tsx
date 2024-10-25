@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 export default function First() {
   const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
+  const [answer, setAnswer] = useState<string>('');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -10,49 +11,30 @@ export default function First() {
       setNameFromStorage(storedName);
     }
   }, []);
-  
-  const like = () => {
-    return fetch("http://localhost:3001/like", {
-      method: 'POST'
+
+  const testCheck = () => {
+    return fetch("http://localhost:3001/testCheck", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({answer: answer}),
     })
     .then((res)=>{
-      return res.json()
+      return res.text()
     })
     .then((data)=>{
-      console.log(data.like);
+      console.log(data);
     })
     .catch((err) => console.log(err))
   }
-  const dislike = () => {
-    return fetch("http://localhost:3001/dislike", {
-      method: 'POST'
-    })
-    .then((res) => {
-      return res.json()
-    })
-    .then((data) => {
-      console.log(data.dislike);
-    })
-    .catch((err) => console.log(err))
-  }
-  const pushover = () => {
-    return fetch("http://localhost:3001/pushover", {
-      method: 'POST'
-    })
-    .then((res) => {
-      return res.json()
-    })
-    .then((data) => {
-      console.log(data.pushover);
-    })
-    .catch((err) => console.log(err))
-  }
-  
+
   const question = [
-    {id: 1, text: '(오늘도 야근해야겠네..)아, 네 저 주세요!', click: pushover},
-    {id: 2, text: '아, 죄송해요. 저도 지금 일이 좀 쌓여서요..', click: like},
-    {id: 3, text: '싫은데요? 제가 왜요.', click: dislike}
+    {id: 1, text: '(오늘도 야근해야겠네..)아, 네 저 주세요!', click: 'pushover'},
+    {id: 2, text: '아, 죄송해요. 저도 지금 일이 좀 쌓여서요..', click: 'like'},
+    {id: 3, text: '싫은데요? 제가 왜요.', click: 'dislike'}
   ]
+  const checkClick = (answer: string) => {
+    setAnswer(answer)
+  }
   return (
     <div>
       <div>
@@ -60,10 +42,11 @@ export default function First() {
       </div>
       <div>
         {question.map((answer) => (
-          <Link key={answer.id} href="/second_question"> 
-            <div onClick={answer.click}>{answer.text}</div>
-          </Link>
+          <div key={answer.id} onClick={() => checkClick(answer.click)}>{answer.text}</div>
         ))}
+      </div>
+      <div>
+        <Link href="/second_question"><button onClick={testCheck}>다음으로</button></Link>
       </div>
     </div>
   );

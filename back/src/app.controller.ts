@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserDTO } from './dto/dto';
 
@@ -6,14 +6,14 @@ import { UserDTO } from './dto/dto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
-
   @Post('/nameSend')
   sendName(@Body() userName: UserDTO) {
     return this.appService.sendName(userName);
+  }
+
+  @Post('/testCheck')
+  testCheck(@Body() body: { answer: string }) {
+    return this.appService.testCheck(body.answer);
   }
 
   @Post('/like')
