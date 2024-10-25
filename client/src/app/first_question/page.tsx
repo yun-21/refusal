@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import AnswerFetch from '../answer_fetch/answer_fetch';
+import AnswerArr from '../answer_arr/answer';
 export default function First() {
   const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
   const [answer, setAnswer] = useState<string>('');
@@ -14,21 +16,7 @@ export default function First() {
   }, []);
 
   const answerFetch = async () => {
-    if (answer) { // 선택된 대답이 있을 때만 fetch 실행
-      try {
-        const response = await fetch("http://localhost:3001/answerResult", {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ answer: answer }),
-        });
-        const data = await response.text();
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      alert('답변을 선택해 주세요.'); // 선택되지 않았을 때 경고
-    }
+    await AnswerFetch(answer)
   }
 
   const question = [
@@ -47,7 +35,7 @@ export default function First() {
       </div>
       <div>
         {question.map((answer) => (
-          <div key={answer.id} onClick={() => checkClick(answer.click, answer.id)} style={{ color: colorChange === answer.id ? 'blue' : 'black'}}>{answer.text}</div>
+          <AnswerArr key={answer.id} id={answer.id} text={answer.text} click={answer.click} isSelected={colorChange === answer.id} onClick={checkClick}/>
         ))}
       </div>
       <div>
