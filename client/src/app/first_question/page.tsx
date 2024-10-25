@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 export default function First() {
   const [nameFromStorage, setNameFromStorage] = useState<string | null>(null);
   const [answer, setAnswer] = useState<string>('');
+  const [colorChange, setColorChange] = useState<number | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -12,19 +13,22 @@ export default function First() {
     }
   }, []);
 
-  const testCheck = () => {
-    return fetch("http://localhost:3001/testCheck", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({answer: answer}),
-    })
-    .then((res)=>{
-      return res.text()
-    })
-    .then((data)=>{
-      console.log(data);
-    })
-    .catch((err) => console.log(err))
+  const answerFetch = async () => {
+    if (answer) { // 선택된 대답이 있을 때만 fetch 실행
+      try {
+        const response = await fetch("http://localhost:3001/answerResult", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ answer: answer }),
+        });
+        const data = await response.text();
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      alert('답변을 선택해 주세요.'); // 선택되지 않았을 때 경고
+    }
   }
 
   const question = [
@@ -32,8 +36,9 @@ export default function First() {
     {id: 2, text: '아, 죄송해요. 저도 지금 일이 좀 쌓여서요..', click: 'like'},
     {id: 3, text: '싫은데요? 제가 왜요.', click: 'dislike'}
   ]
-  const checkClick = (answer: string) => {
+  const checkClick = (answer: string, id: number) => {
     setAnswer(answer)
+    setColorChange(id);
   }
   return (
     <div>
@@ -42,11 +47,11 @@ export default function First() {
       </div>
       <div>
         {question.map((answer) => (
-          <div key={answer.id} onClick={() => checkClick(answer.click)}>{answer.text}</div>
+          <div key={answer.id} onClick={() => checkClick(answer.click, answer.id)} style={{ color: colorChange === answer.id ? 'blue' : 'black'}}>{answer.text}</div>
         ))}
       </div>
       <div>
-        <Link href="/second_question"><button onClick={testCheck}>다음으로</button></Link>
+        <Link href="/second_question"><button onClick={answerFetch}>다음으로</button></Link>
       </div>
     </div>
   );
