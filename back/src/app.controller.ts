@@ -20,22 +20,6 @@ export class AppController {
     return this.appService.check();
   }
 
-  @Post('/like')
-  likeCount() {
-    return this.appService.likeCounter();
-  }
-  @Post('/dislike')
-  dislikeCount() {
-    return this.appService.dislikeCounter();
-  }
-  @Post('/pushover')
-  pushoverCount() {
-    return this.appService.pushoverCounter();
-  }
-  @Post('/notRefusal')
-  notRefusalEnding() {
-    return this.appService.notRefusalEnding();
-  }
   @Post('/result')
   result() {
     return this.appService.result();

@@ -50,22 +50,4 @@ export class AppService {
     console.log(user);
     return user;
   }
-  likeCounter() {
-    this.likeCount++;
-    console.log('likeCount:', this.likeCount); // 로그로 값 확인
-    return { like: this.likeCount };
-  }
-  dislikeCounter() {
-    this.dislikeCount++;
-    console.log('dislikeCount:', this.dislikeCount); // 로그로 값 확인
-    return { dislike: this.dislikeCount };
-  }
-  pushoverCounter() {
-    this.pushoverCount++;
-    console.log('pushoverCount:', this.pushoverCount); // 로그로 값 확인
-    return { pushover: this.pushoverCount };
-  }
-  notRefusalEnding() {
-    return { gomin: this.gomin };
-  }
 }
