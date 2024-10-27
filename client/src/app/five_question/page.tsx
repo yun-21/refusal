@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+
+import AnswerFetch from '../answer_fetch/answer_fetch';
 import AnswerArr from '../answer_arr/answer';
 
 export default function Five() {
@@ -16,21 +18,7 @@ export default function Five() {
   }, []);
 
   const answerFetch = async () => {
-    if (answer) { // 선택된 대답이 있을 때만 fetch 실행
-      try {
-        const response = await fetch("http://localhost:3001/finalResult", {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ answer: answer }),
-        });
-        const data = await response.text();
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      alert('답변을 선택해 주세요.'); // 선택되지 않았을 때 경고
-    }
+    await AnswerFetch(answer)
   }
 
   const checkClick = (answer: string, id: number) => {
