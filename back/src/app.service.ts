@@ -25,6 +25,9 @@ export class AppService {
     //   3: '거절 연습을 할 정도까지는 아니지만 거절을 잘 못하는 편이신 것 같습니다.',
     //   4: '당신은 거절하는 연습이 필요한 것 같아요~. 연습이 필요하다면 시작을 누르시고, 필요 없으시다면 이대로 종료해도 됩니다.',
     // };
+    if (this.arr.includes('like') === true) {
+      console.log('check');
+    }
     return;
   }
 
