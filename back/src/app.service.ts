@@ -3,10 +3,6 @@ import { UserDTO } from './dto/dto';
 
 @Injectable()
 export class AppService {
-  private likeCount = 0;
-  private dislikeCount = 0;
-  private pushoverCount = 0;
-  private gomin = 0;
   private arr = [];
 
   answerResult(answer: string) {
