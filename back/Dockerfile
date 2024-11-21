@@ -1,5 +1,5 @@
 # Node.js 기반의 이미지 사용
-FROM node:14
+FROM node:18
 
 # 작업 디렉토리 생성
 WORKDIR /app
