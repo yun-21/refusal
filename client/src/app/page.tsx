@@ -9,11 +9,11 @@ export default function Home() {
     setModal(!modal);
   }
   return (
-    <div>
-      <div className="">
-        <h1>거절을 못하는 당신을 위하여..</h1>
+    <div className="w-full h-full">
+      <div className="flex flex-col items-center w-100">
+        왜 안먹는거야 왜지? 왜?죠?
       </div>
-      <div>
+      <div className="text-black">
         게임 설명
       </div>
       <div onClick={modalClick}>
