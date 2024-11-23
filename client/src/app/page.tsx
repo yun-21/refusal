@@ -10,8 +10,10 @@ export default function Home() {
   }
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col items-center w-100 text-black">
-        <h1>거절을 못하는 당신을 위하여..</h1>
+      <div className="flex flex-col items-center w-100 ">
+        <div className="text-5xl font-bold text-black">
+          거절을 못하는 당신을 위하여..
+        </div>
       </div>
       <div className="text-black">
         게임 설명
