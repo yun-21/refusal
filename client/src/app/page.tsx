@@ -4,9 +4,13 @@ import StartModal from "./startModal";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
+  const [explanModal, setExplanModal] = useState(false);
 
   const modalClick = () => {
     setModal(!modal);
+  }
+  const explanModalClick = () => {
+    setExplanModal(!explanModal);
   }
   return (
     <div className="w-full h-full">
@@ -15,7 +19,7 @@ export default function Home() {
           거절을 못하는 당신을 위하여..
         </div>
       </div>
-      <div className="text-black">
+      <div onClick={explanModalClick} className="text-black">
         게임 설명
       </div>
       <div onClick={modalClick} className="text-black">
