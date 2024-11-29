@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import StartModal from "./startModal";
-import ExplanStartModal from "./explanModal";
+import ExplainStartModal from "./explainModal";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
@@ -24,7 +24,7 @@ export default function Home() {
         <div onClick={explanModalClick} className="text-black">
           게임 설명
         </div>
-        <ExplanStartModal open={explanModal} close={explanModalClick} />
+        <ExplainStartModal open={explanModal} close={explanModalClick} />
         <div onClick={modalClick} className="text-black">
           게임 시작
         </div>
