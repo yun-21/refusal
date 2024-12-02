@@ -21,12 +21,12 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col gap-10 items-center h-4/5">
-        <div className="bg-red-50 w-32 h-10 flex justify-center items-center">
+        <div className="bg-blue-50 w-32 h-10 flex justify-center items-center rounded-xl shadow-lg shadow-blue-500 font-bold">
           <div onClick={explanModalClick} className="text-black">
             게임 설명
           </div>
         </div>
-        <div className="bg-yellow-100 w-32 h-10 flex justify-center items-center">
+        <div className="bg-red-50 w-32 h-10 flex justify-center items-center shadow-lg shadow-red-500 rounded-xl font-bold">
           <div onClick={modalClick} className="text-black">
             게임 시작
           </div>
