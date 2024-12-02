@@ -20,16 +20,21 @@ export default function Home() {
           거절을 못하는 당신을 위하여..
         </div>
       </div>
-      <div className="flex flex-col items-center h-4/5">
-        <div onClick={explanModalClick} className="text-black">
-          게임 설명
+      <div className="flex flex-col gap-10 items-center h-4/5">
+        <div className="bg-red-50 w-32 h-10 flex justify-center items-center">
+          <div onClick={explanModalClick} className="text-black">
+            게임 설명
+          </div>
         </div>
-        <ExplainStartModal open={explanModal} close={explanModalClick} />
-        <div onClick={modalClick} className="text-black">
-          게임 시작
+        <div className="bg-yellow-100 w-32 h-10 flex justify-center items-center">
+          <div onClick={modalClick} className="text-black">
+            게임 시작
+          </div>
         </div>
       </div>
+
+      <ExplainStartModal open={explanModal} close={explanModalClick} />
       <StartModal open={modal} close={modalClick} />
-    </div>
+    </div >
   );
 }
