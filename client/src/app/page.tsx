@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col items-center w-100 h-1/5">
-        <div className="text-5xl font-bold text-black drop-shadow-[0_9px_4px_rgba(0,0,0,1)]">
+        <div className="text-7xl font-black text-black drop-shadow-[8px_12px_4px_rgba(0,0,0,0.8)]">
           거절을 못하는 당신을 위하여..
         </div>
       </div>
