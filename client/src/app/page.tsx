@@ -20,7 +20,7 @@ export default function Home() {
           거절을 못하는 당신을 위하여..
         </div>
       </div>
-      <div className="flex flex-col gap-10 items-center justify-center h-5/6 p-48 bg-red-300">
+      <div className="flex flex-col gap-10 items-center justify-center h-4/6 bg-black m-10">
         <div className="bg-blue-50 w-32 h-10 flex justify-center items-center rounded-xl shadow-lg shadow-blue-500 font-bold">
           <div onClick={explanModalClick} className="text-black">
             게임 설명
