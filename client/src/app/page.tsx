@@ -15,12 +15,14 @@ export default function Home() {
   }
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col items-center p-10 w-100 h-1/6">
-        <div className="text-7xl font-black text-black drop-shadow-[8px_12px_4px_rgba(0,0,0,0.8)]">
-          거절을 못하는 당신을 위하여..
+      <div className="flex flex-col items-center w-100 h-1/6 bg-slate-200 justify-center">  
+        <div className="text-7xl font-black text-cyan-950 w-[1000px] h-28 flex items-center justify-center border-4 border-solid border-e-blue-500">
+          <div className="drop-shadow-[8px_12px_4px_rgba(0,0,0,0.8)]">
+            거절을 못하는 당신을 위하여..
+          </div>
         </div>
       </div>
-      <div className="flex flex-col gap-10 items-center justify-center h-4/6 bg-black m-10">
+      <div className="flex flex-col gap-10 items-center justify-center h-4/6 bg-black mt-10">
         <div className="bg-blue-50 w-32 h-10 flex justify-center items-center rounded-xl shadow-lg shadow-blue-500 font-bold">
           <div onClick={explanModalClick} className="text-black">
             게임 설명
