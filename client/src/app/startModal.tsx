@@ -6,8 +6,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 200,
-  height: 150,
+  width: 300,
+  height: 200,
   bgcolor: 'background.paper',
   borderRadius: 3,
   boxShadow: 24,
@@ -26,11 +26,11 @@ const StartModal: React.FC<check> = ({ open, close }) => {
   return (
     <Modal open={open} onClose={close}>
       <Box sx={style}>
-        <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <Button variant="contained" color="primary" onClick={close}>
+        <div className='h-full flex justify-center items-center gap-5'>
+          <Button variant="contained" color="primary" onClick={close} size="large" className='hover:h-12 w-20'>
             예
           </Button>
-          <Button onClick={gameStart} variant="contained" color="error" style={{ marginLeft: 10 }}>
+          <Button onClick={gameStart} variant="contained" color="error" size="large" className='hover:h-12'>
             아니요
           </Button>
         </div>
