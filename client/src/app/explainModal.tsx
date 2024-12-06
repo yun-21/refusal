@@ -10,7 +10,9 @@ const style = {
   bgcolor: 'background.paper',
   borderRadius: 3,
   boxShadow: 24,
-  p: 4,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 };
 
 interface check {
@@ -21,8 +23,8 @@ const ExplainStartModal: React.FC<check> = ({ open, close }) => {
   return (
     <Modal open={open} onClose={close}>
       <Box sx={style}>
-        <div className='text-black text-3xl font-black text-center shadow-md bg-gray-100'>게임 설명</div>
-        <div className='text-black flex items-center flex-col h-72 justify-end text-lg'>
+        <div className='text-black text-4xl font-black flex items-center justify-center shadow-md bg-gray-100 h-12 w-96 mt-10'>게임 설명</div>
+        <div className='text-black flex items-center flex-col h-72 justify-center mt-9 text-lg'>
           <div className=' mb-10'>질문을 보고 자신이 어떤 식으로 대답할까에</div>
           <div className='mb-10'>가까운 답변을 선택하여 다음으로 넘어가면 되는 것이다.</div>
           <div>거절을 잘 하는 사람인지 아닌지를 판단해주는 게임이다.</div>
