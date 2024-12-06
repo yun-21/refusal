@@ -21,10 +21,11 @@ const ExplainStartModal: React.FC<check> = ({ open, close }) => {
   return (
     <Modal open={open} onClose={close}>
       <Box sx={style}>
-        <div className='text-black text-3xl font-black text-center shadow-md'>게임 설명</div>
-        <div className='h-full flex justify-around items-center flex-col'>
-          <div className='text-black'>질문을 보고 자신이 어떤 식으로 대답하는 것에 가까운 답변을 선택하여 다음으로 넘어가면 되는 것이다.</div>
-          <div className='text-black'>거절을 잘 하는 사람인지 아닌지를 판단해주는 게임이다.</div>
+        <div className='text-black text-3xl font-black text-center shadow-md bg-gray-100'>게임 설명</div>
+        <div className='text-black flex items-center flex-col h-72 justify-end text-lg'>
+          <div className=' mb-10'>질문을 보고 자신이 어떤 식으로 대답할까에</div>
+          <div className='mb-10'>가까운 답변을 선택하여 다음으로 넘어가면 되는 것이다.</div>
+          <div>거절을 잘 하는 사람인지 아닌지를 판단해주는 게임이다.</div>
         </div>
       </Box>
     </Modal>
