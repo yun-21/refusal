@@ -26,11 +26,12 @@ export default function Name() {
     setName(event.target.value);
   }
   return (
-    <div className='text-black w-full h-full flex flex-col justify-center items-center'>
-      <div className='bg-blue-700 w-96 h-6'>
-        Plz answer me
+    <div className='text-black w-full h-full flex flex-col justify-center items-center bg-slate-300'>
+      <div className='bg-blue-700 w-96 h-6 flex'>
+        <div>Plz answer me</div>
+        <div className='ml-64 bg-zinc-200 w-4 h-4 flex justify-center items-center mt-1'>x</div>
       </div>
-      <div className='bg-red-300 w-96 h-52 '>
+      <div className='bg-red-300 w-96 h-52'>
         <h1>당신의 이름은 무엇입니까?</h1>
         <div>저장되는 것은 아니오니, 안심하세요.</div>
         <input type="text" onChange={nameChange} placeholder="이름 적으시오." />
