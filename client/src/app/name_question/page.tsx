@@ -35,7 +35,7 @@ export default function Name() {
         <h1>당신의 이름은 무엇입니까?</h1>
         <div>저장되는 것은 아니오니, 안심하세요.</div>
         <input type="text" onChange={nameChange} placeholder="이름 적으시오." />
-        <div onClick={nameSend} className='bg-gray-500 w-20 text-center shadow-md'>시작하기</div>
+        <div onClick={nameSend} className='bg-gray-400 w-20 text-center border-gray-500 border-x-2 border-b-2 border-r-4 border-t-gray-300 border-t-2 shadow-md mt-2'>시작하기</div>
       </div>
     </div>
   );
