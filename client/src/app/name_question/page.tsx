@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 export default function Name() {
   const router = useRouter();
   const [name, setName] = useState('');
+  const [isClicked, setIsClicked] = useState(false);
+
   const nameSend = () => {
     return fetch('http://localhost:3001/nameSend', {
       method: 'POST',
@@ -35,7 +37,14 @@ export default function Name() {
         <div>당신의 이름은 무엇입니까?</div>
         <div>저장되는 것은 아니오니, 안심하세요.</div>
         <input type="text" onChange={nameChange} placeholder="이름 적으시오." />
-        <div onClick={nameSend} className='bg-gray-400 w-20 text-center border-gray-500 border-x-2 border-b-2 border-r-4 border-t-gray-300 border-t-2 shadow-md mt-2'>시작하기</div>
+        <div
+          onMouseDown={() => setIsClicked(true)}
+          onMouseUp={() => setIsClicked(false)}
+          onClick={nameSend}
+          className={`bg-gray-400 w-20 text-center border-gray-500 border-x-2 border-b-2 border-r-4 border-t-gray-300 border-t-2 shadow-md mt-2 ${isClicked ? 'bg-gray-500 shadow-lg translate-y-1' : ''}`}
+        >
+          시작하기
+        </div>
       </div>
     </div>
   );
