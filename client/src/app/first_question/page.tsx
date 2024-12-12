@@ -29,9 +29,9 @@ export default function First() {
     {id: 3, text: '싫은데요? 제가 왜요.', click: 'dislike'}
   ]
   return (
-    <div>
+    <div className='text-black'>
       <div>
-        <h1>{nameFromStorage}씨의 일은 산더미이다. 하지만 당신의 동료가 자신이 해야할 일이 너무 많다며, 일 하나를 주려고 한다. 당신은 어떻게 할 것 인가?</h1>
+        <div className='text-5xl font-bold'><span className='text-indigo-500'>{nameFromStorage}씨</span>의 일은 산더미이다. 하지만 당신의 동료가 자신이 해야할 일이 너무 많다며, 일 하나를 주려고 한다. 당신은 어떻게 할 것 인가?</div>
       </div>
       <div>
         {question.map((answer) => (
