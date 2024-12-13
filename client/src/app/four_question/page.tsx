@@ -31,9 +31,9 @@ export default function Four() {
     { id: 3, text: '(승진 얘기 없었을 때는 가만히 있더니.. 승진할 수 있다고 하니까 발표를 하겠다고?..) 아.. 제가 이 발표를 놓치면 안될 것 같아서요. 혹시 떙떙씨에게도 이 기회를 잡아야 할 이유가 있나요?', click: 'pushover' }
   ]
   return (
-    <div>
+    <div className='text-black'>
       <div>
-        <h1>{nameFromStorage}씨는 승진할 수 있는 기회인 중요한 발표를 맡았다. 그런데 다른 팀원이 자신이 발표하면 안되겠냐고 양보해달라고 한다. 승진을 한다면 다른 팀으로 배정된다. 이때 당신은 어떻게 할 것인가?</h1>
+        <div className='text-5xl font-bold'>{nameFromStorage}씨는 승진할 수 있는 기회인 중요한 발표를 맡았다. 그런데 다른 팀원이 자신이 발표하면 안되겠냐고 양보해달라고 한다. 승진을 한다면 다른 팀으로 배정된다. 이때 당신은 어떻게 할 것인가?</div>
       </div>
       <div>
         {question.map((answer) => (

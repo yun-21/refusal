@@ -32,9 +32,9 @@ export default function Five() {
     { id: 3, text: '죄송합니다. 제가 오늘 중요한 약속이 있어서요. 내일 일을 두 배로 열심히 하도록 하겠습니다.', click: 'notRefusal' }
   ]
   return (
-    <div>
+    <div className='text-black'>
       <div>
-        <h1>{nameFromStorage}씨는 친구와 중요한 약속이 있지만, 직장에서 긴급한 일이 발생해 야근을 해야하는 상황이다. 당신은 어떻게 할 것인가?</h1>
+        <div className='text-5xl font-bold'>{nameFromStorage}씨는 친구와 중요한 약속이 있지만, 직장에서 긴급한 일이 발생해 야근을 해야하는 상황이다. 당신은 어떻게 할 것인가?</div>
       </div>
       <div>
         {question.map((answer) => (

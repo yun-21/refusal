@@ -34,9 +34,9 @@ export default function Second() {
     })
   }
   return (
-    <div>
+    <div className='text-black'>
       <div>
-        <h1>{nameFromStorage}씨는 중요한 미팅 저녁 약속이 있다. {nameFromStorage}씨의 팀원들이 회식을 제안한다. 당신은 어떻게 할 것 인가?</h1>
+        <div className='text-5xl font-bold'>{nameFromStorage}씨는 중요한 미팅 저녁 약속이 있다. {nameFromStorage}씨의 팀원들이 회식을 제안한다. 당신은 어떻게 할 것 인가?</div>
       </div>
       <div>
         {question.map((answer) => (

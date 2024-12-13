@@ -31,9 +31,9 @@ export default function Third() {
     { id: 3, text: '야, 너 나랑 둘이 노는게 재미 없냐?', click: 'dislike' }
   ]
   return (
-    <div>
+    <div className='text-black'>
       <div>
-        <h1>{nameFromStorage}씨의 친구와 단 둘이 놀기로 하였다. 하지만 친구가 갑자기 다른 친구를 부른다고 한다. 오늘은 이 친구에게 고민상담 좀 하려고 했는데.. 이때의 당신은 어떻게 할 것 인가?</h1>
+        <div className='text-5xl font-bold'>{nameFromStorage}씨의 친구와 단 둘이 놀기로 하였다. 하지만 친구가 갑자기 다른 친구를 부른다고 한다. 오늘은 이 친구에게 고민상담 좀 하려고 했는데.. 이때의 당신은 어떻게 할 것 인가?</div>
       </div>
       <div>
         {question.map((answer) => (

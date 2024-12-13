@@ -31,9 +31,9 @@ export default function FourBonus() {
     { id: 3, text: '다음에 기회가 있다면 도와드릴게요.', click: 'dislike' }
   ]
   return (
-    <div>
+    <div className='text-black'>
       <div>
-        <h1>{nameFromStorage}씨는 승진할 수 있는 기회인 중요한 발표를 맡았다. 그런데 다른 팀원이 자신이 발표하면 안되겠냐고 양보해달라고 한다. 승진을 한다면 다른 팀으로 배정된다. 이때 당신은 어떻게 할 것인가?</h1>
+        <div className='text-5xl font-bold'>{nameFromStorage}씨는 승진할 수 있는 기회인 중요한 발표를 맡았다. 그런데 다른 팀원이 자신이 발표하면 안되겠냐고 양보해달라고 한다. 승진을 한다면 다른 팀으로 배정된다. 이때 당신은 어떻게 할 것인가?</div>
       </div>
       <div>
         {question.map((answer) => (
